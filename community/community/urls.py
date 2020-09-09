@@ -13,10 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import (handler404, handler500)
 from django.contrib import admin
 from django.urls import path, include
+from user.views import home
+
+# handler400 = 'views.bad_request'
+# handler403 = 'views.bad_request'
+handler404 = 'user.views.page_not_found'
+handler500 = 'user.views.server_error'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
+    path('', home),
 ]
