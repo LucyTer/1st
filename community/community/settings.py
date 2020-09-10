@@ -24,6 +24,10 @@ SECRET_KEY = 'p6f%0@b^w-6m&#p7a4z2j7%%0(c&q*fiku$$c(@j&12z8-)t(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
+
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -111,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/seoul'
 
 USE_I18N = True
 
