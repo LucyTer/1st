@@ -9,6 +9,7 @@ class Board(models.Model):
     contents = models.TextField(verbose_name='내용')
     writer = models.ForeignKey(
         'user.User', on_delete=models.CASCADE, verbose_name="글쓴이")
+    tags = models.ManyToManyField("tag.Tag", verbose_name='태그')
     registered_dttm = models.DateField(auto_now_add=True, verbose_name="등록시간")
 
     def __str__(self):

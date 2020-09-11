@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.http import Http404
 from user.models import User
+from tag.models import Tag
 from .models import Board
 from .forms import BoardForm
 
@@ -26,11 +27,20 @@ def board_write(request):
             user_id = request.session.get('user')
             user = User.objects.get(pk=user_id)
 
+            tags = form.cleaned_data['tags'].split('#')
+
             board = Board()
             board.title = form.cleaned_data['title']
             board.contents = form.cleaned_data['contents']
             board.writer = user
             board.save()
+
+            for tag in tags:
+                if not tag:
+                    continue
+
+                _tag, _ = Tag.objects.get_or_create(name=tag)
+                board.tags.add(_tag)
 
             return redirect('/board/list/')
     else:

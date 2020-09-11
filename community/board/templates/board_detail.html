@@ -3,17 +3,17 @@
   <div class="col-12">
     <div class="form-group">
       <label for="title">제목</label>
-      <input
-        type="text"
-        id="title"
-        class="form-control"
-        value="{{ board.title }}"
-        redonly
-      />
+      <input type="text" id="title" class="form-control" value="{{ board.title }}" redonly />
       <label for="contents">내용</label>
       <textarea class="form-control" redonly>{{ board.contents }}</textarea>
+      <label for="tags">태그</label>
+      <ol class="breadcrumb">
+        {% for tag in board.tags.all %}
+        <li class="breadcrumb-item"><a href="#">{{ tag.name }}</a></li>
+        {% endfor %}
+      </ol>
     </div>
-    <button class="btn btn-primary">돌아가기</button>
+    <button class="btn btn-primary" onclick="location.href='/board/list/'">돌아가기</button>
   </div>
 </div>
 {% endblock contents %}
